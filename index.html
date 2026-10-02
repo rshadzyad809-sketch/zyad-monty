@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خزنة زياد ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="hearts" aria-hidden="true"></div>
+
+  <!-- شاشة الخزنة -->
+  <main id="lockScreen" class="screen active">
+    <section class="safe-card">
+      <div class="lock-icon">🔐</div>
+      <p class="small-title">رسالة خاصة من زياد</p>
+      <h1>الخزنة مقفولة</h1>
+      <p class="hint">أدخلي الرقم السري عشان تعرفي اللي جواها ❤️</p>
+
+      <div id="display" class="display">••••</div>
+
+      <div class="keypad">
+        <button class="key" data-number="1">1</button>
+        <button class="key" data-number="2">2</button>
+        <button class="key" data-number="3">3</button>
+        <button class="key" data-number="4">4</button>
+        <button class="key" data-number="5">5</button>
+        <button class="key" data-number="6">6</button>
+        <button class="key" data-number="7">7</button>
+        <button class="key" data-number="8">8</button>
+        <button class="key" data-number="9">9</button>
+        <button class="key clear" id="clearBtn">⌫</button>
+        <button class="key" data-number="0">0</button>
+        <button class="key enter" id="enterBtn">✓</button>
+      </div>
+
+      <p id="error" class="error"></p>
+    </section>
+  </main>
+
+  <!-- شاشة الرسالة -->
+  <main id="messageScreen" class="screen">
+    <section class="letter">
+      <div class="letter-top">💌</div>
+      <p class="from">من زياد إلى أماني</p>
+      <h2>إلى أماني ❤️</h2>
+
+      <div class="message">
+        <p>أماني،</p>
+        <p>
+          يمكن الخزنة دي شكلها بسيط، لكن اللي جواها رسالة مخصوصة ليكي.
+          أتمنى كل مرة تقري فيها الكلام ده تبتسمي وتحسي قد إيه وجودك شخص مميز.
+        </p>
+        <p>
+          أتمنى ليكي أيام جميلة، وضحكة دايمًا على وشك،
+          وكل حاجة نفسك فيها تلاقي طريقها ليكي.
+        </p>
+        <p>
+          من زياد ❤️
+        </p>
+      </div>
+
+      <button id="backBtn" class="back-btn">🔒 اقفلي الرسالة</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --pink: #ff4f81;
+  --pink-dark: #d92e61;
+  --soft: #fff0f5;
+  --text: #351827;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Cairo", sans-serif;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, #ffd6e4 0, transparent 35%),
+    radial-gradient(circle at bottom right, #ffc0d4 0, transparent 35%),
+    linear-gradient(135deg, #fff5f8, #ffe5ee);
+  color: var(--text);
+}
+
+.screen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 2;
+}
+
+.screen.active {
+  display: flex;
+  animation: screenIn .7s ease both;
+}
+
+.safe-card,
+.letter {
+  width: min(430px, 100%);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, .82);
+  border: 1px solid rgba(255, 255, 255, .9);
+  box-shadow: 0 25px 70px rgba(110, 25, 55, .18);
+  backdrop-filter: blur(15px);
+  text-align: center;
+}
+
+.safe-card {
+  padding: 32px 24px 25px;
+}
+
+.lock-icon {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 12px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #ff6f99, #e73369);
+  box-shadow: 0 12px 30px rgba(231, 51, 105, .25);
+  font-size: 36px;
+}
+
+.small-title {
+  color: var(--pink-dark);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+h1 {
+  margin-top: 4px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.hint {
+  margin: 6px 0 20px;
+  color: #795765;
+  font-size: 14px;
+}
+
+.display {
+  height: 58px;
+  border-radius: 17px;
+  background: #fff;
+  border: 2px solid #ffd0de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 12px;
+  padding-left: 12px;
+  font-size: 25px;
+  font-weight: 800;
+  color: var(--pink-dark);
+  margin-bottom: 18px;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.key {
+  border: 0;
+  height: 58px;
+  border-radius: 17px;
+  background: #fff;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 21px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(80, 20, 40, .08);
+  transition: transform .15s, background .15s, color .15s;
+}
+
+.key:hover {
+  transform: translateY(-2px);
+  background: #fff1f5;
+}
+
+.key:active {
+  transform: scale(.94);
+}
+
+.key.enter {
+  background: linear-gradient(135deg, #ff5b8b, #df2f65);
+  color: white;
+}
+
+.key.clear {
+  color: var(--pink-dark);
+}
+
+.error {
+  min-height: 25px;
+  margin-top: 10px;
+  color: #d52f5f;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.letter {
+  padding: 30px 27px;
+  position: relative;
+}
+
+.letter-top {
+  font-size: 46px;
+  margin-bottom: 4px;
+}
+
+.from {
+  color: var(--pink-dark);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.letter h2 {
+  font-size: 31px;
+  margin: 3px 0 18px;
+}
+
+.message {
+  text-align: right;
+  background: rgba(255, 242, 247, .85);
+  border-radius: 22px;
+  padding: 20px;
+  line-height: 2;
+  font-size: 15px;
+}
+
+.message p + p {
+  margin-top: 12px;
+}
+
+.back-btn {
+  margin-top: 18px;
+  border: 0;
+  border-radius: 14px;
+  padding: 11px 18px;
+  background: #fff;
+  color: var(--pink-dark);
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(80, 20, 40, .08);
+}
+
+.heart {
+  position: fixed;
+  bottom: -40px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: .75;
+  animation: floatHeart linear forwards;
+  filter: drop-shadow(0 5px 8px rgba(255, 48, 105, .15));
+}
+
+.shake {
+  animation: shake .4s ease;
+}
+
+@keyframes floatHeart {
+  from {
+    transform: translateY(0) rotate(0deg) scale(.7);
+    opacity: 0;
+  }
+  15% { opacity: .8; }
+  to {
+    transform: translateY(-115vh) rotate(35deg) scale(1.25);
+    opacity: 0;
+  }
+}
+
+@keyframes screenIn {
+  from { opacity: 0; transform: scale(.96) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(8px); }
+  50% { transform: translateX(-8px); }
+  75% { transform: translateX(5px); }
+}
+
+@media (max-width: 430px) {
+  h1 { font-size: 27px; }
+  .safe-card { padding: 27px 18px 22px; }
+  .key { height: 54px; }
+  .letter { padding: 25px 20px; }
+}
