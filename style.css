@@ -49,7 +49,26 @@ body {
 }
 
 .safe-card {
-  padding: 32px 24px 25px;
+  padding: 30px 24px 25px;
+}
+
+.safe-card.unlocking {
+  animation: safeOpen .9s ease both;
+}
+
+.password-hint {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #fff0f5;
+  color: var(--pink-dark);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.unlocking .lock-icon {
+  transform: rotate(-12deg) scale(1.12);
 }
 
 .lock-icon {
@@ -147,6 +166,8 @@ h1 {
 .letter {
   padding: 30px 27px;
   position: relative;
+  max-height: 92vh;
+  overflow-y: auto;
 }
 
 .letter-top {
@@ -178,6 +199,15 @@ h1 {
   margin-top: 12px;
 }
 
+.message strong {
+  color: var(--pink-dark);
+}
+
+.signature {
+  text-align: center;
+  font-weight: 700;
+}
+
 .back-btn {
   margin-top: 18px;
   border: 0;
@@ -189,6 +219,16 @@ h1 {
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(80, 20, 40, .08);
+}
+
+.unlock-heart {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  pointer-events: none;
+  z-index: 10;
+  font-size: 30px;
+  animation: unlockHeart 1.4s ease-out forwards;
 }
 
 .heart {
@@ -215,6 +255,18 @@ h1 {
     transform: translateY(-115vh) rotate(35deg) scale(1.25);
     opacity: 0;
   }
+}
+
+@keyframes safeOpen {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.04) rotate(-1deg); }
+  100% { transform: scale(.96); opacity: 0; }
+}
+
+@keyframes unlockHeart {
+  0% { transform: translate(-50%, -50%) scale(.3); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.8); opacity: 0; }
 }
 
 @keyframes screenIn {

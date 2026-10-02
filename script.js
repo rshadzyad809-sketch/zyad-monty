@@ -3,6 +3,7 @@ const PASSWORD = "1907";
 const lockScreen = document.getElementById("lockScreen");
 const messageScreen = document.getElementById("messageScreen");
 const display = document.getElementById("display");
+const safeCard = document.getElementById("safeCard");
 const error = document.getElementById("error");
 const clearBtn = document.getElementById("clearBtn");
 const enterBtn = document.getElementById("enterBtn");
@@ -29,13 +30,32 @@ function clearCode() {
   updateDisplay();
 }
 
+function createUnlockHearts() {
+  for (let i = 0; i < 18; i++) {
+    setTimeout(() => {
+      const heart = document.createElement("span");
+      heart.className = "unlock-heart";
+      heart.textContent = i % 3 === 0 ? "♡" : "♥";
+      heart.style.setProperty("--x", `${Math.random() * 360 - 180}px`);
+      heart.style.setProperty("--y", `${Math.random() * 360 - 180}px`);
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 1500);
+    }, i * 45);
+  }
+}
+
 function checkCode() {
   if (enteredCode === PASSWORD) {
     error.textContent = "";
-    lockScreen.classList.remove("active");
-    messageScreen.classList.add("active");
-    enteredCode = "";
-    updateDisplay();
+    safeCard.classList.add("unlocking");
+    createUnlockHearts();
+    setTimeout(() => {
+      lockScreen.classList.remove("active");
+      messageScreen.classList.add("active");
+      safeCard.classList.remove("unlocking");
+      enteredCode = "";
+      updateDisplay();
+    }, 850);
   } else {
     error.textContent = "الرقم مش صحيح... حاولي تاني ❤️";
     display.classList.remove("shake");
